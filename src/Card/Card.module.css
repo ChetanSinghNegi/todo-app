@@ -12,21 +12,28 @@
 
   /* overflow-y: auto; */
   text-align: center;
-  box-shadow: 2px 2px 10px 5px black;
+  box-shadow: 2px 2px 8px 5px orange;
 }
 .title {
-  border-bottom: 2px solid orange;
+  border-bottom: 2px solid rgb(158, 187, 114);
+  border-spacing: 5px;
+  color: white;
   min-height: 10vh;
   font-size: 25px;
   padding-top: 5px;
-  /* overflow-y: auto; */
-  /* overflow-x: hidden; */
+}
+.title:active {
+  background-color: greenyellow;
 }
 .description {
   min-height: 15vh;
+  color: white;
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
+}
+.description:active {
+  background-color: greenyellow;
 }
 .delete {
   position: absolute;
@@ -34,6 +41,7 @@
   bottom: 0;
   border: 3px solid pink;
   cursor: pointer;
+  z-index: 2;
 }
 .delete:hover {
   color: white;

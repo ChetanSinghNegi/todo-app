@@ -3,8 +3,6 @@ import classes from "./Card.module.css";
 
 const Card = (props) => {
   const onDeleteClicked = () => {
-    console.log("delete Clicked");
-    console.log("id of delete => ", props.id);
     props.deleteHandler(props.id);
   };
   return (
@@ -12,7 +10,11 @@ const Card = (props) => {
       <header className={classes.title}>{props.title}</header>
       <p className={classes.description}>
         {props.description}
-        <span className={classes.delete} onClick={onDeleteClicked}>
+        <span
+          className={classes.delete}
+          onClick={onDeleteClicked}
+          title="Delete"
+        >
           X
         </span>
       </p>

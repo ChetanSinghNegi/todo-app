@@ -5,6 +5,7 @@ import { useState } from "react";
 import store from "./store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setTodo, deleteTodo } from "./store/todo-slice";
+import videoSrc from "./video.mp4";
 
 function App() {
   const [title, setTitle] = useState("");
@@ -24,18 +25,18 @@ function App() {
       return;
     }
     const newTodo = { id: uuidv4(), title: title, description: description };
-    // console.log("newTodo =>", newTodo);
     setTitle("");
     setDescription("");
     dispatch(setTodo(newTodo));
-    console.log("values of redux", todoListRedux);
   };
   const deleteHandler = (id) => {
-    console.log("id at app =>", id);
     dispatch(deleteTodo(id));
   };
   return (
     <div className="app">
+      <video autoPlay loop muted className="video-background">
+        <source src={videoSrc} type="video/mp4" />
+      </video>
       <form className="input-form">
         <input
           type="text"

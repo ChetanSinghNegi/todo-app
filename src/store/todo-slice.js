@@ -13,14 +13,12 @@ export const TodoSlice = createSlice({
     },
     deleteTodo: (state, action) => {
       let idx = -1;
-      console.log("id at reducer delete", action.payload);
       for (let i = 0; i < state.value.length; i++) {
         if (state.value[i].id == action.payload) {
           idx = i;
           break;
         }
       }
-      console.log("idx => ", idx);
       if (idx != -1) {
         state.value.splice(idx, 1);
       }
