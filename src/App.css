@@ -1,0 +1,18 @@
+body {
+  background-color: grey;
+  text-align: center;
+}
+.app {
+  transition: all ease 5s;
+}
+.input-form {
+  margin: 2px 0 10px 0px;
+}
+.submit {
+  transition: all ease 1s;
+}
+.submit:hover {
+  background-color: blue;
+  color: aliceblue;
+  cursor: pointer;
+}

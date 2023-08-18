@@ -1,0 +1,41 @@
+.cardContainer {
+  max-width: 60vw;
+  min-height: 30vh;
+  /* height: 25vh; */
+  /* max-height: 40vh; */
+  font-size: 18px;
+  font-family: "Brush Script MT", "Lucida Console";
+  position: relative;
+  left: calc(calc(100vw - 60vw) / 2);
+  border: 5px solid rgb(168, 216, 129);
+  margin: 5px 0px 20px 0px;
+
+  /* overflow-y: auto; */
+  text-align: center;
+  box-shadow: 2px 2px 10px 5px black;
+}
+.title {
+  border-bottom: 2px solid orange;
+  min-height: 10vh;
+  font-size: 25px;
+  padding-top: 5px;
+  /* overflow-y: auto; */
+  /* overflow-x: hidden; */
+}
+.description {
+  min-height: 15vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+}
+.delete {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border: 3px solid pink;
+  cursor: pointer;
+}
+.delete:hover {
+  color: white;
+  background-color: red;
+}
