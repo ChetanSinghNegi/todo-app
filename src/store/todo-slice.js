@@ -23,8 +23,17 @@ export const TodoSlice = createSlice({
         state.value.splice(idx, 1);
       }
     },
+    updateTodo: (state, action) => {
+      for (let i = 0; i < state.value.length; i++) {
+        if (state.value[i].id == action.payload.id) {
+          state.value[i].title = action.payload.title;
+          state.value[i].description = action.payload.description;
+          break;
+        }
+      }
+    },
   },
 });
 
-export const { setTodo, deleteTodo } = TodoSlice.actions;
+export const { setTodo, deleteTodo, updateTodo } = TodoSlice.actions;
 export default TodoSlice.reducer;
