@@ -30,17 +30,17 @@ const Form = (props) => {
       alert("Bhery Clever!!! Please fill an info");
       return;
     }
-    setTitle("");
-    setDescription("");
     let newTodo;
     if (props.create) {
       newTodo = { id: uuidv4(), title: title, description: description };
-      props.create && dispatch(setTodo(newTodo));
+      dispatch(setTodo(newTodo));
     } else if (props.update) {
       newTodo = { id: props.id, title: title, description: description };
-      props.update && dispatch(updateTodo(newTodo));
+      dispatch(updateTodo(newTodo));
       props.closeEdit();
     }
+    setTitle("");
+    setDescription("");
   };
   const onCancel = (e) => {
     e.preventDefault();
@@ -51,17 +51,19 @@ const Form = (props) => {
     <form className="input-form">
       <input
         type="text"
-        placeholder="update title"
+        placeholder={props.create ? "Create Title" : "Update Title"}
         onChange={onTitleChange}
         value={title}
-        title="update title"
+        title={props.create ? "Create Title" : "Update Title"}
+        className="input-text"
       />
       <input
         type="text"
-        placeholder="Update Description"
+        placeholder={props.create ? "Create Description" : "Update Description"}
         onChange={onDescriptionChange}
         value={description}
-        title="Update Description"
+        title={props.create ? "Create Description" : "Update Description"}
+        className="input-text"
       />
       <button
         type="submit"

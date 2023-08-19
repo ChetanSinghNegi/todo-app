@@ -9,8 +9,6 @@
   left: calc(calc(100vw - 60vw) / 2);
   border: 5px solid rgb(168, 216, 129);
   margin: 5px 0px 20px 0px;
-
-  /* overflow-y: auto; */
   text-align: center;
   box-shadow: 2px 2px 8px 5px orange;
 }
@@ -29,11 +27,11 @@
   cursor: crosshair;
 }
 .description {
+  /* position: relative; */
   min-height: 15vh;
   color: white;
   overflow-x: hidden;
   overflow-y: auto;
-  position: relative;
 }
 .description:hover {
   cursor: crosshair;

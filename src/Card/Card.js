@@ -3,11 +3,14 @@ import classes from "./Card.module.css";
 import { AiOutlineClose } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import Update from "../update/Update";
+import { useDispatch } from "react-redux";
+import { deleteTodo } from "../store/todo-slice";
 
 const Card = (props) => {
+  const dispatch = useDispatch();
   const [openEdit, setOpenEdit] = useState(false);
   const onDeleteClicked = () => {
-    props.deleteHandler(props.id);
+    dispatch(deleteTodo(props.id));
   };
   const onEditClicked = () => {
     // redirect to Update.js
