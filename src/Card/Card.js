@@ -5,16 +5,25 @@ import { FiEdit } from "react-icons/fi";
 import Update from "../update/Update";
 import { useDispatch } from "react-redux";
 import { deleteTodo } from "../store/todo-slice";
+import Modal from "../pages/Modal";
 
 const Card = (props) => {
   const dispatch = useDispatch();
   const [openEdit, setOpenEdit] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const onDeleteClicked = () => {
-    dispatch(deleteTodo(props.id));
+    setOpenModal((state) => !state);
   };
   const onEditClicked = () => {
     // redirect to Update.js
     setOpenEdit((state) => !state);
+  };
+
+  const modalHandler = (value) => {
+    if (value == true) {
+      dispatch(deleteTodo(props.id));
+    }
+    setOpenModal((state) => !state);
   };
   return (
     <>
@@ -31,6 +40,7 @@ const Card = (props) => {
         </p>
       </div>
       {openEdit && <Update id={props.id} closeEdit={onEditClicked} />}
+      {openModal && <Modal modalHandler={modalHandler} />}
     </>
   );
 };

@@ -1,24 +1,25 @@
 .cardContainer {
-  max-width: 60vw;
-  min-height: 30vh;
-  /* height: 25vh; */
-  /* max-height: 40vh; */
+  width: 60vw;
+  height: 25vh;
+  max-height: 40vh;
   font-size: 18px;
   font-family: "Brush Script MT", "Lucida Console";
   position: relative;
   left: calc(calc(100vw - 60vw) / 2);
   border: 5px solid rgb(168, 216, 129);
-  margin: 5px 0px 20px 0px;
+  margin: 20px 0px 20px 0px;
   text-align: center;
   box-shadow: 2px 2px 8px 5px orange;
 }
 .title {
   border-bottom: 2px solid rgb(158, 187, 114);
   border-spacing: 5px;
+  width: 60vw;
+  height: 10vh;
   color: white;
-  min-height: 10vh;
   font-size: 25px;
   padding-top: 5px;
+  overflow: auto;
 }
 .title:active {
   background-color: greenyellow;
@@ -29,9 +30,10 @@
 .description {
   /* position: relative; */
   min-height: 15vh;
+  width: 60vw;
+  height: 15vh;
   color: white;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: auto;
 }
 .description:hover {
   cursor: crosshair;

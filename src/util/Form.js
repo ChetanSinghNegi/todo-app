@@ -27,7 +27,7 @@ const Form = (props) => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     if (title.length == 0 || description.length == 0) {
-      alert("Bhery Clever!!! Please fill an info");
+      alert("Not Very fast SON!!! Please fill complete info");
       return;
     }
     let newTodo;
