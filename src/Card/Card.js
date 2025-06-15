@@ -3,28 +3,28 @@ import classes from "./Card.module.css";
 import { AiOutlineClose } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import Update from "../update/Update";
-import { useDispatch } from "react-redux";
-import { deleteTodo } from "../store/todo-slice";
 import Modal from "../pages/Modal";
+import { useDispatch } from "react-redux";
+import { deleteTodo } from "../slice/todoSlice";
 
 const Card = (props) => {
-  const dispatch = useDispatch();
   const [openEdit, setOpenEdit] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const dispatch = useDispatch();
   const onDeleteClicked = () => {
     setOpenModal((state) => !state);
   };
   const onEditClicked = () => {
-    // redirect to Update.js
     setOpenEdit((state) => !state);
   };
 
-  const modalHandler = (value) => {
-    if (value == true) {
+  const modalActionHandler = (flag) => {
+    if (flag) {
       dispatch(deleteTodo(props.id));
     }
     setOpenModal((state) => !state);
   };
+
   return (
     <>
       <div className={classes.cardContainer}>
@@ -40,7 +40,7 @@ const Card = (props) => {
         </p>
       </div>
       {openEdit && <Update id={props.id} closeEdit={onEditClicked} />}
-      {openModal && <Modal modalHandler={modalHandler} />}
+      {openModal && <Modal modalHandler={modalActionHandler} />}
     </>
   );
 };

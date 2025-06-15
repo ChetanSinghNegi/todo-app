@@ -1,23 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setTodo, updateTodo } from "../store/todo-slice";
+import { useDispatch } from "react-redux";
+import { clearTodo, saveTodo, updateTodo } from "../slice/todoSlice";
 import { v4 as uuidv4 } from "uuid";
+import Modal from "../pages/Modal";
 
 const Form = (props) => {
-  //for update => update prop
-  //for create => create prop
-  const todoReduxList = useSelector((state) => state.todo.value);
-  const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  useEffect(() => {
-    for (let i = 0; i < todoReduxList.length; i++) {
-      if (todoReduxList[i].id == props.id) {
-        setTitle(todoReduxList[i].title);
-        setDescription(todoReduxList[i].description);
-      }
-    }
-  }, []);
+  const [openModal, setOpenModal] = useState(false);
+  const dispatch = useDispatch();
+
   const onTitleChange = (e) => {
     setTitle(() => e.target.value);
   };
@@ -27,13 +19,13 @@ const Form = (props) => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     if (title.length == 0 || description.length == 0) {
-      alert("Not Very fast SON!!! Please fill complete info");
+      alert("Please fill complete info");
       return;
     }
     let newTodo;
     if (props.create) {
       newTodo = { id: uuidv4(), title: title, description: description };
-      dispatch(setTodo(newTodo));
+      dispatch(saveTodo(newTodo));
     } else if (props.update) {
       newTodo = { id: props.id, title: title, description: description };
       dispatch(updateTodo(newTodo));
@@ -42,9 +34,21 @@ const Form = (props) => {
     setTitle("");
     setDescription("");
   };
+
+  const deleteAllTodosHandler = (e) => {
+    e.preventDefault();
+    setOpenModal((state) => !state);
+  };
+
+  const modalHandler = (flag) => {
+    if (flag) {
+      dispatch(clearTodo());
+    }
+    setOpenModal(false);
+  };
+
   const onCancel = (e) => {
     e.preventDefault();
-    console.log("Cancelled Clicked");
     props.closeEdit();
   };
   return (
@@ -78,6 +82,12 @@ const Form = (props) => {
           Cancel
         </button>
       )}
+      {props.create && (
+        <button onClick={deleteAllTodosHandler} className="submit">
+          Delete All Todos
+        </button>
+      )}
+      {openModal && <Modal modalHandler={modalHandler} />}
     </form>
   );
 };
